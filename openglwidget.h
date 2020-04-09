@@ -45,7 +45,7 @@ public:
     void myStateChagne(int state);
 public slots:
     void setColor(const QColor &_color);
-
+    void getPoint(QVector2D point);
 private:
 
     QMatrix4x4 projectionMatrix;
@@ -62,13 +62,14 @@ private:
     QOpenGLBuffer *yAxis;
     QOpenGLBuffer *xAxis;
     QOpenGLBuffer index;
-
     QOpenGLBuffer plot;
     QOpenGLBuffer plotIndex;
     QOpenGLVertexArrayObject vao;
     bool keys[4024] = { false };
     float deltaTime = 1 / 60.0f;
-
+    float X;
+    float Y;
+     QVector<QVector2D> data;
     QVector3D color;
 
 

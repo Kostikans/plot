@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent), ui(new Ui::Form)
     ui->setupUi(this);
     color = new QColorDialog;
     connect(color,SIGNAL(currentColorChanged(const QColor &)),ui->openglWidget,SLOT(setColor(const QColor &)));
-
+    connect(ui->openGLWidget,SIGNAL(sendX(float)),ui->openglWidget,SLOT(getX(float)));
+    connect(ui->openGLWidget,SIGNAL(sendPoint(QVector2D)),ui->openglWidget,SLOT(getPoint(QVector2D)));
 }
 
 MainWindow::~MainWindow()

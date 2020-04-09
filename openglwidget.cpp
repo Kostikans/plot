@@ -144,7 +144,7 @@ void OpenglWidget::updatePlotBuffer()
            temp = myFunc(i);
 
         qDebug() << i*10.0f << " " <<temp;
-        data.push_back(QVector2D(i/100, temp/100));
+        data.push_back(QVector2D(x/100, temp/100));
 
         ++count;
     }
@@ -231,6 +231,33 @@ void OpenglWidget::setColor(const QColor &_color)
     color = QVector3D(_color.redF(),_color.greenF(),_color.blueF());
 }
 
+void OpenglWidget::getPoint(QVector2D point){
+    int maxLen =  qFabs(xMax) > qFabs(xMin) ? qFabs(xMax) : qFabs(xMin);
+    maxLen/=10;
+    float fixedStep = 1.0f;
+
+
+    int count = 0;
+    for(float i = xMin ; i < xMax ; i += fixedStep){
+        float temp;
+        if(!my)
+           temp = baseFunc(i);
+        else
+           temp = myFunc(i);
+
+        data.push_back(QVector2D(point.x()/50, point.y()/10 ));
+
+        ++count;
+    }
+    qDebug()<<point.y();
+    plot.create();
+    plot.bind();
+    plot.allocate(data.data(),data.size() * sizeof(QVector2D));
+    plot.release();
+
+    update();
+
+}
 
 
 

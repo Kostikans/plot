@@ -19,12 +19,14 @@ SOURCES += \
     camera.cpp \
     main.cpp \
     mainwindow.cpp \
-    openglwidget.cpp
+    openglwidget.cpp \
+    pendulum.cpp
 
 HEADERS += \
     camera.h \
     mainwindow.h \
-    openglwidget.h
+    openglwidget.h \
+    pendulum.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -36,4 +38,6 @@ FORMS += \
 
 DISTFILES += \
     frag.frag \
+    sphereFrag.frag \
+    sphereVert.vert \
     vert.vert
